@@ -35,12 +35,12 @@ const CUSTOMERS = [
 ];
 
 const OFFER = [
-  "Splits agent output into checkable claims",
-  "Traces each claim to your research",
-  "Flags anything invented, with a confidence score",
-  "Scores relevance: did it use the prospect's real details",
-  "Suggests a safer line wherever it flags one",
-  "Prints the math: the full grade formula on every report",
+  "Decomposes agent output into atomic, checkable claims.",
+  "Traces every claim to its source.",
+  "Flags invented facts with calibrated confidence.",
+  "Scores relevance against your prospect data.",
+  "Supplies the safer line for every flag.",
+  "Prints the full grading formula on every report.",
 ];
 
 const ARTICLE_URL = "https://akarshsabbavarapu09.hashnode.dev/your-ai-sdr-is-inventing-facts-i-built-the-audit-layer-that-catches-them";
@@ -54,12 +54,12 @@ export async function Landing() {
       <Header />
       <main className="mx-auto w-full max-w-column px-5 pb-24">
         <section className="flex flex-col items-start gap-6 pb-16 pt-16 sm:gap-8 sm:pb-24 sm:pt-28">
-          <span className="eyebrow">Tower Audit</span>
+          <span className="eyebrow">Tower.audit</span>
           <h1 className="max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:text-64">
-            Know what your AI SDR sends before your prospects do.
+            Know what your AI SDR sends. Before your prospects do.
           </h1>
           <p className="max-w-xl text-16 text-muted sm:text-20">
-            Tower is the trust layer for your outbound. It reads what your agent wrote and checks every claim against your research.
+            The trust layer for autonomous outbound. Every claim your agent makes, checked against your research, graded, and traced. Before it sends.
           </p>
         </section>
 
@@ -99,16 +99,16 @@ export async function Landing() {
         </section>
 
         <section id="what-it-does" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
-          <span className="eyebrow">What Tower does</span>
+          <span className="eyebrow">Capabilities</span>
           <ul className="mt-10 flex max-w-2xl list-disc flex-col gap-4 pl-5 text-16 text-ink marker:text-faint sm:text-20">
             {OFFER.map((o) => (
-              <li key={o}>{o}</li>
+              <li key={o} className="text-pretty">{o}</li>
             ))}
           </ul>
         </section>
 
         <section id="demo" className="scroll-mt-8 border-t border-line pt-16 sm:pt-24">
-          <span className="eyebrow">See it work</span>
+          <span className="eyebrow">Proof</span>
           <h2 className="mb-10 mt-6 font-display text-48 font-bold tracking-display text-ink sm:text-64">Watch it catch one.</h2>
           <SamplePreview report={report} />
           <p className="mt-6 text-14 text-muted">Sample report. The $40M Series C never happened. Tower caught it before it sent.</p>

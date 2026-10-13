@@ -77,7 +77,7 @@ export function ProblemSection({ questions }: { questions: string[] }) {
       </ul>
       <div className={`transition-opacity duration-[480ms] ease-out ${done ? "visible opacity-100" : "invisible opacity-0"}`}>
         <p className="mt-28 max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:mt-40 sm:text-64">
-          For all of these, Tower is the solution.
+          Tower is the answer.
         </p>
         <UseTowerButton label="Cross-examine my agent" className="mt-12" />
       </div>
