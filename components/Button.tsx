@@ -5,11 +5,11 @@ type Variant = "primary" | "ghost" | "icon" | "link";
 const VARIANTS: Record<Variant, string> = {
   // Amber, depresses on press: scales and drops a pixel.
   primary:
-    "h-12 rounded-control bg-amber px-6 font-display text-16 font-semibold tracking-display text-ink-950 hover:bg-amber-hover active:translate-y-px disabled:hover:bg-amber disabled:active:translate-y-0",
+    "h-12 rounded-control bg-amber px-6 font-display text-16 font-bold tracking-display text-ink hover:bg-amber-hover active:translate-y-px disabled:hover:bg-amber disabled:active:translate-y-0",
   ghost:
-    "h-10 rounded-control border border-line bg-transparent px-4 text-14 font-medium text-paper hover:border-faint hover:bg-ink-800 active:bg-ink-900 disabled:hover:border-line disabled:hover:bg-transparent",
-  icon: "size-10 shrink-0 rounded-control border border-line bg-transparent text-muted hover:border-faint hover:bg-ink-800 hover:text-paper active:bg-ink-900 disabled:hover:border-line disabled:hover:bg-transparent",
-  link: "rounded-control px-1 font-mono text-12 uppercase tracking-eyebrow text-muted underline decoration-line underline-offset-4 hover:text-paper hover:decoration-muted active:text-amber disabled:hover:text-muted",
+    "h-10 rounded-control border border-line bg-transparent px-4 text-14 font-medium text-ink hover:border-faint hover:bg-surface active:bg-paper disabled:hover:border-line disabled:hover:bg-transparent",
+  icon: "size-10 shrink-0 rounded-control border border-line bg-transparent text-muted hover:border-faint hover:bg-paper hover:text-ink active:bg-surface disabled:hover:border-line disabled:hover:bg-transparent",
+  link: "readout rounded-control px-1 text-muted underline decoration-line underline-offset-4 hover:text-ink hover:decoration-muted active:text-amber-ink disabled:hover:text-muted",
 };
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

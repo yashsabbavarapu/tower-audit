@@ -83,7 +83,7 @@ export function SourceDrawer({ claim, messages, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="drawer-title"
-        className={`absolute inset-x-0 bottom-0 mx-auto flex max-h-drawer w-full max-w-column flex-col rounded-t-card border border-b-0 border-line bg-ink-900 duration-drawer ease-out ${
+        className={`absolute inset-x-0 bottom-0 mx-auto flex max-h-drawer w-full max-w-column flex-col rounded-t-card border border-b-0 border-line bg-surface duration-drawer ease-out ${
           // Visible immediately on open (so focus can land); hidden only after the slide-out.
           open ? "visible translate-y-0 transition-transform" : "invisible translate-y-full transition-[transform,visibility]"
         }`}
@@ -100,8 +100,8 @@ export function SourceDrawer({ claim, messages, onClose }: Props) {
         {shown && (
           <div className="flex flex-col gap-6 overflow-y-auto overscroll-contain px-5 pb-8 pt-5">
             <div className="flex flex-col gap-3">
-              <span className="truncate font-mono text-12 text-faint">{messageLabel(message, shown.messageIndex)}</span>
-              <p className="font-display text-20 font-semibold tracking-display text-paper">{shown.text}</p>
+              <span className="readout truncate text-faint">{messageLabel(message, shown.messageIndex)}</span>
+              <p className="font-display text-20 font-bold tracking-display text-ink">{shown.text}</p>
               <div className="flex flex-wrap items-center gap-3">
                 <VerdictChip verdict={shown.verdict} />
                 <Confidence value={shown.confidence} />
@@ -113,8 +113,8 @@ export function SourceDrawer({ claim, messages, onClose }: Props) {
             <div className="flex flex-col gap-3">
               <span className="eyebrow">{BASIS_LABEL[shown.basis]}</span>
               {shown.source ? (
-                <figure className="flex flex-col gap-3 rounded-card border border-line bg-ink-950 p-4">
-                  <blockquote className="border-l border-amber pl-3 text-16 text-paper">{shown.source.excerpt}</blockquote>
+                <figure className="flex flex-col gap-3 rounded-card border border-line bg-paper p-4">
+                  <blockquote className="border-l border-amber pl-3 text-16 text-ink">{shown.source.excerpt}</blockquote>
                   {(shown.source.label || shown.source.url) && (
                     <figcaption className="flex flex-col gap-2">
                       {shown.source.label && <span className="text-14 text-muted">{shown.source.label}</span>}
@@ -123,7 +123,7 @@ export function SourceDrawer({ claim, messages, onClose }: Props) {
                           href={shown.source.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="pressable inline-flex w-fit items-center gap-2 rounded-control font-mono text-12 text-amber underline decoration-amber-dim underline-offset-4 hover:text-amber-hover hover:decoration-amber active:opacity-disabled"
+                          className="pressable inline-flex w-fit items-center gap-2 rounded-control font-mono text-12 text-amber-ink underline decoration-amber-dim underline-offset-4 hover:text-ink hover:decoration-amber active:opacity-disabled"
                         >
                           <span className="break-all">{shown.source.url}</span>
                           <ExternalLink aria-hidden="true" strokeWidth={1.5} className="size-3 shrink-0" />
@@ -133,7 +133,7 @@ export function SourceDrawer({ claim, messages, onClose }: Props) {
                   )}
                 </figure>
               ) : (
-                <p className="rounded-card border border-line bg-ink-950 p-4 text-14 text-muted">
+                <p className="rounded-card border border-line bg-paper p-4 text-14 text-muted">
                   No excerpt. Nothing in the provided sources supports this claim, so Tower shows no trace rather than inventing one.
                 </p>
               )}

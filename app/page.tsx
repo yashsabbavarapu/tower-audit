@@ -1,5 +1,5 @@
-import { AuditApp } from "@/components/AuditApp";
+import { Landing } from "@/components/Landing";
 
 export default function Page() {
-  return <AuditApp />;
+  return <Landing />;
 }

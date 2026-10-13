@@ -11,17 +11,15 @@ const config: Config = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      ink: {
-        950: "var(--ink-950)",
-        900: "var(--ink-900)",
-        800: "var(--ink-800)",
-      },
-      line: "var(--line)",
       paper: "var(--paper)",
+      surface: "var(--surface)",
+      ink: "var(--ink)",
       muted: "var(--muted)",
       faint: "var(--faint)",
+      line: "var(--line)",
       amber: {
         DEFAULT: "var(--amber)",
+        ink: "var(--amber-ink)",
         hover: "var(--amber-hover)",
         dim: "var(--amber-dim)",
       },
@@ -32,7 +30,7 @@ const config: Config = {
     fontFamily: {
       display: ["var(--font-display)", "system-ui", "sans-serif"],
       body: ["var(--font-body)", "system-ui", "sans-serif"],
-      mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
     },
     // Spec scale: 12 / 14 / 16 / 20 / 24 / 32 / 48 / 64
     fontSize: {

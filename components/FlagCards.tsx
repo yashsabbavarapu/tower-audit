@@ -19,7 +19,7 @@ export function FlagCards({ claims, onOpen }: Props) {
             <button
               type="button"
               onClick={(e) => onOpen(claim, e.currentTarget)}
-              className="pressable group flex w-full items-start gap-3 rounded-card border border-line bg-ink-900 p-5 text-left hover:border-faint hover:bg-ink-800 active:bg-ink-900"
+              className="pressable group flex w-full items-start gap-3 rounded-card border border-line bg-surface p-5 text-left hover:border-faint hover:bg-paper active:bg-surface"
               aria-label={`Flagged: ${flag.headline}. Open source trace.`}
             >
               <span className="flex min-w-0 flex-1 flex-col gap-4">
@@ -27,9 +27,9 @@ export function FlagCards({ claims, onOpen }: Props) {
                   <VerdictChip verdict="flagged" />
                   <Confidence value={claim.confidence} />
                 </span>
-                <span className="font-display text-20 font-semibold tracking-display text-paper">{flag.headline}</span>
+                <span className="font-display text-20 font-bold tracking-display text-ink">{flag.headline}</span>
                 <span className="border-l border-line pl-3 text-14 text-muted">&ldquo;{claim.text}&rdquo;</span>
-                <span className="text-16 text-paper">{flag.explanation}</span>
+                <span className="text-16 text-ink">{flag.explanation}</span>
                 {flag.fix && (
                   <span className="flex flex-col gap-1">
                     <span className="eyebrow">Instead</span>
@@ -40,7 +40,7 @@ export function FlagCards({ claims, onOpen }: Props) {
               <ChevronRight
                 aria-hidden="true"
                 strokeWidth={1.5}
-                className="mt-1 size-4 shrink-0 text-faint transition-[transform,color] duration-micro ease-out group-hover:translate-x-0.5 group-hover:text-muted"
+                className="mt-1 size-4 shrink-0 text-faint transition-[transform,color] duration-micro ease-out group-hover:translate-x-0.5 group-hover:text-ink"
               />
             </button>
           </li>

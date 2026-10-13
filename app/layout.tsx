@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Inter, Inter_Tight } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const display = Inter_Tight({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-display" });
+const display = Inter_Tight({ subsets: ["latin"], weight: ["700"], variable: "--font-display" });
 const body = Inter({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-body" });
-const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
   title: "Tower Audit",
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  // Mirrors --ink-950; viewport metadata cannot read CSS variables.
-  themeColor: "#0B0D10",
+  // Mirrors --paper; viewport metadata cannot read CSS variables.
+  themeColor: "#F4F1E8",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${GeistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

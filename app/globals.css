@@ -6,15 +6,15 @@
 
 @layer base {
   html {
-    color-scheme: dark;
+    color-scheme: light;
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-ink-950 font-body text-16 text-paper antialiased;
+    @apply bg-paper font-body text-16 text-ink antialiased;
   }
   ::selection {
-    @apply bg-amber-dim text-paper;
+    @apply bg-amber-dim text-ink;
   }
   :focus-visible {
     @apply outline outline-focus outline-offset-focus outline-amber;
@@ -22,9 +22,13 @@
 }
 
 @layer components {
-  /* Mono eyebrow label: the data voice. */
+  /* Mono readout: the data voice — counts, timestamps, labels. Color is set by the caller. */
+  .readout {
+    @apply font-mono text-12 font-medium uppercase tracking-eyebrow;
+  }
+  /* Mono eyebrow label: a readout in the secondary tone. */
   .eyebrow {
-    @apply font-mono text-12 font-medium uppercase tracking-eyebrow text-muted;
+    @apply readout text-muted;
   }
   /* Shared press physics for anything tappable: .98 on press, 160ms ease-out release. */
   .pressable {
@@ -39,5 +43,61 @@
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
+  }
+}
+
+/* "Use Tower" morph: the shared element grows over --dur-morph; the rest of the page fades beneath it. */
+::view-transition-group(tower-morph) {
+  animation-duration: var(--dur-morph);
+  animation-timing-function: var(--ease-out);
+}
+/* The button's snapshot fades out early so its stretched label never smears; the textarea fades in as the box lands. */
+::view-transition-old(tower-morph),
+::view-transition-new(tower-morph) {
+  height: 100%;
+  mix-blend-mode: normal;
+  animation-duration: var(--dur-morph);
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-old(tower-morph) {
+  animation-name: morph-out;
+  animation-duration: var(--dur-drawer);
+}
+::view-transition-new(tower-morph) {
+  animation-name: morph-in;
+}
+@keyframes morph-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes morph-in {
+  from {
+    opacity: 0;
+  }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--dur-morph);
+  animation-timing-function: var(--ease-out);
+}
+
+/* Browsers without View Transitions: the tool view fades in instead. */
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@supports not (view-transition-name: none) {
+  .view-enter {
+    animation: view-fade-in var(--dur-drawer) var(--ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 1ms !important;
   }
 }

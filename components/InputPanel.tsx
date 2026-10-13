@@ -1,8 +1,9 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useId, useState, type KeyboardEvent } from "react";
+import { useEffect, useId, useState, type KeyboardEvent } from "react";
 import { LIMITS } from "@/lib/limits";
+import { AUDIT_FIELD_ID, MORPH_NAME, signalAuditMounted } from "@/lib/morph";
 import { SAMPLE_OUTPUT, SAMPLE_SOURCES } from "@/lib/sample";
 import { Button } from "./Button";
 import { VerdictChip } from "./VerdictChip";
@@ -17,16 +18,16 @@ interface Props {
 }
 
 const FIELD =
-  "w-full resize-y rounded-control border border-line bg-ink-900 p-4 text-16 text-paper placeholder:text-faint transition-[border-color,background-color] duration-micro ease-out hover:border-faint focus:border-amber focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-disabled";
+  "w-full resize-y rounded-control border border-line bg-surface p-4 text-16 text-ink placeholder:text-faint transition-[border-color,background-color] duration-micro ease-out hover:border-faint focus:border-amber focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-disabled";
 
 const count = (n: number) => n.toLocaleString("en-US");
 
 export function InputPanel({ output, sources, error, onOutputChange, onSourcesChange, onSubmit }: Props) {
   const [sourcesOpen, setSourcesOpen] = useState(sources.length > 0);
-  const outputId = useId();
   const sourcesId = useId();
   const [legendOpen, setLegendOpen] = useState(false);
   const legendId = useId();
+  useEffect(signalAuditMounted, []);
   const canSubmit = output.trim().length > 0 && output.length <= LIMITS.output && sources.length <= LIMITS.sources;
 
   const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -46,7 +47,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-4">
         <span className="eyebrow">Tower Audit</span>
-        <h1 className="font-display text-32 font-bold tracking-display text-paper sm:text-48">
+        <h1 className="font-display text-32 font-bold tracking-display text-ink sm:text-48">
           Grade what your AI SDR is about to send.
         </h1>
         <p className="max-w-xl text-16 text-muted">
@@ -64,7 +65,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
       >
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between gap-4">
-            <label htmlFor={outputId} className="eyebrow">
+            <label htmlFor={AUDIT_FIELD_ID} className="eyebrow">
               Agent output
             </label>
             <Button variant="link" onClick={loadSample}>
@@ -72,7 +73,8 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
             </Button>
           </div>
           <textarea
-            id={outputId}
+            id={AUDIT_FIELD_ID}
+            style={{ viewTransitionName: MORPH_NAME }}
             value={output}
             onChange={(e) => onOutputChange(e.target.value)}
             onKeyDown={onKeyDown}
@@ -81,7 +83,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
             placeholder={"Subject: …\n\nHi Maya,\n\n…\n\n---\n\nSeparate messages with --- or start each with a Subject: line."}
             className={FIELD}
           />
-          <span className={`self-end font-mono text-12 ${output.length > LIMITS.output ? "text-amber" : "text-faint"}`}>
+          <span className={`readout self-end tabular-nums ${output.length > LIMITS.output ? "text-amber-ink" : "text-faint"}`}>
             {count(output.length)} / {count(LIMITS.output)}
           </span>
         </div>
@@ -92,16 +94,16 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
             onClick={() => setSourcesOpen((v) => !v)}
             aria-expanded={sourcesOpen}
             aria-controls={sourcesId}
-            className="pressable group flex items-center justify-between gap-4 rounded-control py-2 text-left hover:text-paper"
+            className="pressable group flex items-center justify-between gap-4 rounded-control py-2 text-left hover:text-ink"
           >
             <span className="flex flex-col gap-1">
-              <span className="eyebrow group-hover:text-paper">Source context · optional</span>
+              <span className="eyebrow group-hover:text-ink">Source context · optional</span>
               <span className="text-14 text-muted">The research the agent worked from. Claims are verified against it.</span>
             </span>
             <ChevronDown
               aria-hidden="true"
               strokeWidth={1.5}
-              className={`size-5 shrink-0 text-muted transition-transform duration-micro ease-out group-hover:text-paper ${sourcesOpen ? "rotate-180" : ""}`}
+              className={`size-5 shrink-0 text-muted transition-transform duration-micro ease-out group-hover:text-ink ${sourcesOpen ? "rotate-180" : ""}`}
             />
           </button>
           {sourcesOpen && (
@@ -124,7 +126,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
         </div>
 
         {error && (
-          <p role="alert" className="rounded-control border border-line bg-ink-900 p-4 text-14 text-paper">
+          <p role="alert" className="rounded-control border border-line bg-surface p-4 text-14 text-ink">
             {error}
           </p>
         )}
@@ -143,11 +145,11 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
             aria-controls={legendId}
             className="pressable group flex w-full items-center justify-between gap-4 rounded-control py-2 text-left"
           >
-            <span className="eyebrow group-hover:text-paper">What the verdicts mean</span>
+            <span className="eyebrow group-hover:text-ink">What the verdicts mean</span>
             <ChevronDown
               aria-hidden="true"
               strokeWidth={1.5}
-              className={`size-5 shrink-0 text-faint transition-transform duration-press ease-out group-hover:text-paper ${legendOpen ? "rotate-180" : ""}`}
+              className={`size-5 shrink-0 text-faint transition-transform duration-press ease-out group-hover:text-ink ${legendOpen ? "rotate-180" : ""}`}
             />
           </button>
         </h2>

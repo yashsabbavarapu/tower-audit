@@ -1,28 +1,28 @@
 /*
  * Tower design tokens — the single source of truth.
- * Source: files/tower-design-spec.md (v0, 2026-10-12). Components must never
- * use raw colors, radii, durations or easings; they reference these through
- * the Tailwind theme (tailwind.config.ts), which maps 1:1 onto this file.
+ * Source: files/tower-design-spec.md (v1 light, 2026-10-13). Components must
+ * never use raw colors, radii, durations or easings; they reference these
+ * through the Tailwind theme (tailwind.config.ts), which maps 1:1 onto this file.
  */
 :root {
   /* Palette */
-  --ink-950: #0b0d10; /* app background */
-  --ink-900: #13161b; /* surface */
-  --ink-800: #1b2027; /* raised surface */
-  --line: #23282f; /* hairlines — separation, never shadows */
-  --paper: #f2eee3; /* primary text */
-  --muted: #8b9097; /* secondary text */
-  --faint: #5a6068; /* tertiary text */
-  --amber: #e8a33d; /* THE accent */
-  --amber-dim: rgba(232, 163, 61, 0.14);
-  --sage: #7dba8b; /* verified verdicts only */
-  --signal: #d96a5f; /* flagged verdicts only */
+  --paper: #f4f1e8; /* app background (warm paper) */
+  --surface: #fbfaf5; /* cards, raised surfaces */
+  --ink: #191b1d; /* primary text */
+  --muted: #6e6a61; /* secondary text */
+  --faint: #a3a097; /* tertiary text */
+  --line: #e3dfd2; /* hairlines — separation, never shadows */
+  --amber: #e8a33d; /* THE accent: fills, dial arc, primary actions */
+  --amber-ink: #a86e14; /* amber text on light backgrounds */
+  --amber-dim: rgba(232, 163, 61, 0.16);
+  --sage: #4e7f5e; /* verified verdicts only */
+  --sage-dim: rgba(78, 127, 94, 0.12);
+  --signal: #c2493b; /* flagged verdicts only */
+  --signal-dim: rgba(194, 73, 59, 0.1);
+  --scrim: rgba(25, 27, 29, 0.44);
 
   /* Derived state tokens (same hues, no new colors) */
-  --amber-hover: #eeb257;
-  --sage-dim: rgba(125, 186, 139, 0.14);
-  --signal-dim: rgba(217, 106, 95, 0.14);
-  --scrim: rgba(11, 13, 16, 0.72);
+  --amber-hover: #dd9630; /* primary hover: amber pressed a shade deeper */
 
   /* Shape */
   --radius-card: 10px;
@@ -38,6 +38,7 @@
   --dur-press: 160ms;
   --dur-drawer: 240ms;
   --dur-dial: 600ms;
+  --dur-morph: 450ms;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --press-scale: 0.98;
 

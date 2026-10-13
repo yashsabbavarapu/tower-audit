@@ -67,21 +67,21 @@ export function GradeDial({ grade }: { grade: number | null }) {
           style={{ transform: `rotate(${-90 + (target / 100) * 180}deg)`, transformOrigin: `${CX}px ${CY}px` }}
           className="transition-transform duration-dial ease-out"
         >
-          <line x1={CX} y1={CY} x2={CX} y2={CY - NEEDLE} strokeWidth={2} strokeLinecap="round" className="stroke-paper" />
+          <line x1={CX} y1={CY} x2={CX} y2={CY - NEEDLE} strokeWidth={2} strokeLinecap="round" className="stroke-ink" />
         </g>
-        <circle cx={CX} cy={CY} r={6} className="fill-ink-950 stroke-paper" strokeWidth={2} />
-        <text x={CX - R} y={CY + 16} textAnchor="middle" className="fill-faint font-mono text-12">
+        <circle cx={CX} cy={CY} r={6} className="fill-surface stroke-ink" strokeWidth={2} />
+        <text x={CX - R} y={CY + 16} textAnchor="middle" className="readout fill-faint">
           0
         </text>
-        <text x={CX + R} y={CY + 16} textAnchor="middle" className="fill-faint font-mono text-12">
+        <text x={CX + R} y={CY + 16} textAnchor="middle" className="readout fill-faint">
           100
         </text>
       </svg>
       <div className="-mt-2 flex items-baseline gap-2">
-        <span className="font-display text-64 font-bold tabular-nums tracking-display text-amber">
+        <span className="font-display text-64 font-bold tabular-nums tracking-display text-amber-ink">
           {shown === null ? "—" : shown}
         </span>
-        <span className="font-mono text-14 text-faint">/100</span>
+        <span className="readout text-faint">/ 100</span>
       </div>
     </div>
   );
