@@ -2,26 +2,26 @@ import { UseTowerButton } from "./UseTowerButton";
 
 const LINKS = [
   { href: "#problem", label: "The problem" },
-  { href: "#gtm", label: "For GTM" },
-  { href: "#what-it-does", label: "What it does" },
+  { href: "#why-us", label: "Why us?" },
+  { href: "#customers", label: "Customers" },
   { href: "#demo", label: "Demo" },
-  { href: "#writing", label: "Writing", wide: true },
+  { href: "#writing", label: "Writing" },
 ];
 
 export function Header() {
   return (
     <header className="border-b border-line">
-      <div className="mx-auto grid h-14 w-full max-w-column grid-cols-[1fr_auto] items-center gap-4 px-5 md:grid-cols-[1fr_auto_1fr]">
+      <div className="mx-auto grid h-14 w-full max-w-column grid-cols-[1fr_auto] items-center gap-4 px-5 lg:grid-cols-[1fr_auto_1fr]">
         <span className="font-display text-20 font-bold tracking-display text-ink">Tower</span>
-        <nav aria-label="Sections" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Sections" className="hidden items-center gap-8 lg:flex">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} className={`readout rounded-control text-muted transition-colors duration-press ease-out hover:text-ink${"wide" in l ? " hidden lg:inline" : ""}`}>
+            <a key={l.href} href={l.href} className="readout whitespace-nowrap rounded-control text-muted transition-colors duration-press ease-out hover:text-ink">
               {l.label}
             </a>
           ))}
         </nav>
         <div className="flex justify-end">
-          <UseTowerButton size="sm" />
+          <UseTowerButton size="sm" label="Try it free" />
         </div>
       </div>
     </header>

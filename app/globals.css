@@ -107,3 +107,24 @@
     animation-duration: 1ms !important;
   }
 }
+
+/* Typewriter cursor: mono block in amber-ink, blinking at the typing point. */
+.type-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.9em;
+  margin-left: 2px;
+  vertical-align: -0.08em;
+  background: var(--amber-ink);
+  animation: type-blink 1s steps(1) infinite;
+}
+@keyframes type-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .type-cursor {
+    animation: none;
+  }
+}

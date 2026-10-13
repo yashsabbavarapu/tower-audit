@@ -4,6 +4,7 @@ import { SAMPLE_OUTPUT, SAMPLE_SOURCES } from "@/lib/sample";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "./Header";
 import { SamplePreview } from "./SamplePreview";
+import { ProblemSection } from "./ProblemSection";
 import { UseTowerButton } from "./UseTowerButton";
 
 const PROBLEMS = [
@@ -19,6 +20,18 @@ const STANZA = [
   "It doesn't check writing. It checks revenue.",
   "Every claim traced to your research. Every flag one click from the send button.",
   "Built for the team living between the CRM and the outbox.",
+];
+
+const WHY_US = [
+  "Every grade prints its formula. No black box.",
+  "It admits what it can't check. Unverifiable is a verdict, not a shrug.",
+  "Every flag comes with a safer line. A flag without a fix is just anxiety.",
+];
+
+const CUSTOMERS = [
+  "GTM engineers. You ship the agents. Tower is the pre-send check.",
+  "RevOps leaders. You own the number. Tower shows what the machines said to get it.",
+  "Founders. Your first SDR is software. Tower is its editor.",
 ];
 
 const OFFER = [
@@ -50,20 +63,7 @@ export async function Landing() {
           </p>
         </section>
 
-        <section id="problem" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
-          <span className="eyebrow">The problem</span>
-          <ul className="mt-12 flex flex-col gap-14 sm:mt-16 sm:gap-20">
-            {PROBLEMS.map((q) => (
-              <li key={q} className="max-w-2xl text-balance font-display text-24 font-bold tracking-display text-ink sm:text-32">
-                {q}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-28 max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:mt-40 sm:text-64">
-            For all of these, Tower is the solution.
-          </p>
-          <UseTowerButton className="mt-12" />
-        </section>
+        <ProblemSection questions={PROBLEMS} />
 
         <section id="gtm" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-40 sm:pt-24">
           <span className="eyebrow">Tailored for GTM</span>
@@ -76,7 +76,29 @@ export async function Landing() {
           </div>
         </section>
 
-        <section id="what-it-does"className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
+        <section id="why-us" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
+          <span className="eyebrow">Why Tower</span>
+          <ul className="mt-10 flex flex-col sm:mt-12">
+            {WHY_US.map((line) => (
+              <li key={line} className="max-w-3xl border-t border-line py-6 font-display text-24 font-bold tracking-display text-ink last:border-b sm:py-8 sm:text-32">
+                <span className="text-balance">{line}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="customers" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
+          <span className="eyebrow">Who it&apos;s for</span>
+          <ul className="mt-10 flex flex-col sm:mt-12">
+            {CUSTOMERS.map((line) => (
+              <li key={line} className="max-w-3xl border-t border-line py-6 font-display text-24 font-bold tracking-display text-ink last:border-b sm:py-8 sm:text-32">
+                <span className="text-balance">{line}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="what-it-does" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
           <span className="eyebrow">What Tower does</span>
           <ul className="mt-10 flex max-w-2xl list-disc flex-col gap-4 pl-5 text-16 text-ink marker:text-faint sm:text-20">
             {OFFER.map((o) => (
