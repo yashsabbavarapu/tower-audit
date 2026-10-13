@@ -79,7 +79,7 @@ export function ProblemSection({ questions }: { questions: string[] }) {
         <p className="mt-28 max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:mt-40 sm:text-64">
           For all of these, Tower is the solution.
         </p>
-        <UseTowerButton label="Use Tower" className="mt-12" />
+        <UseTowerButton label="Cross-examine my agent" className="mt-12" />
       </div>
     </section>
   );

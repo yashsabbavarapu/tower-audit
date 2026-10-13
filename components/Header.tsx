@@ -21,7 +21,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex justify-end">
-          <UseTowerButton size="sm" label="Try it free" />
+          <UseTowerButton size="sm" label="Put it on trial" />
         </div>
       </div>
     </header>

@@ -112,7 +112,7 @@ export async function Landing() {
           <h2 className="mb-10 mt-6 font-display text-48 font-bold tracking-display text-ink sm:text-64">Watch it catch one.</h2>
           <SamplePreview report={report} />
           <p className="mt-6 text-14 text-muted">Sample report. The $40M Series C never happened. Tower caught it before it sent.</p>
-          <UseTowerButton className="mt-10" />
+          <UseTowerButton label="Your turn." className="mt-10" />
         </section>
 
         <section id="writing" className="scroll-mt-8 mt-24 border-t border-line pt-16 sm:mt-32 sm:pt-24">

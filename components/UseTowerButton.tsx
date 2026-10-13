@@ -6,7 +6,7 @@ import { AUDIT_FIELD_ID, MORPH_NAME, waitForAudit } from "@/lib/morph";
 import { Button } from "./Button";
 
 /** Ghost CTA that grows into the audit textarea (View Transitions API; plain navigation elsewhere). */
-export function UseTowerButton({ className = "", size = "lg", label = "Use Tower" }: { className?: string; size?: "sm" | "lg"; label?: string }) {
+export function UseTowerButton({ className = "", size = "lg", label = "Put it on trial" }: { className?: string; size?: "sm" | "lg"; label?: string }) {
   const router = useRouter();
   const ref = useRef<HTMLButtonElement>(null);
 
