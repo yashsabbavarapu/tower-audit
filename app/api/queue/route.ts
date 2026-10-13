@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { requireWriteAuth } from "@/lib/api-auth";
 import { auditEntry, gradedDetail, gradeReport, itemFromReport } from "@/lib/control/grading";
 import type { QueueStatus } from "@/lib/control/types";
 import { describeFailure } from "@/lib/grader/failure";
@@ -30,6 +31,8 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const auth = requireWriteAuth(request);
+  if (!auth.ok) return NextResponse.json(auth.body, { status: auth.status });
   let json: unknown;
   try {
     json = await request.json();

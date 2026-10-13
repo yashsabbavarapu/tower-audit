@@ -15,6 +15,7 @@ interface Initial {
   entries: AuditEntry[];
   points: DriftPoint[];
   storage: "kv" | "memory";
+  authed: boolean;
 }
 
 const NAV = [
@@ -33,7 +34,13 @@ async function api<T>(path: string, init?: RequestInit): Promise<T> {
   return body as T;
 }
 
-const post = (body: unknown): RequestInit => ({ method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+const WRITE_SECRET = process.env.NEXT_PUBLIC_TOWER_API_SECRET ?? "";
+
+const post = (body: unknown): RequestInit => ({
+  method: "POST",
+  headers: { "Content-Type": "application/json", ...(WRITE_SECRET ? { "x-tower-secret": WRITE_SECRET } : {}) },
+  body: JSON.stringify(body),
+});
 
 export function ControlApp({ initial }: { initial: Initial }) {
   const [items, setItems] = useState(initial.items);
@@ -94,7 +101,8 @@ export function ControlApp({ initial }: { initial: Initial }) {
 
   const sampleCount = items.filter((i) => i.sample).length;
   const sample = sampleCount === 0 ? "none" : sampleCount === items.length ? "all" : "some";
-  const showNotice = !noticeDismissed && (initial.storage === "memory" || sampleCount > 0);
+  const showSample = initial.storage === "memory" || sampleCount > 0;
+  const showNotice = !noticeDismissed && (showSample || !initial.authed);
   const openItem = items.find((i) => i.id === openId) ?? null;
 
   return (
@@ -104,10 +112,20 @@ export function ControlApp({ initial }: { initial: Initial }) {
         <div className="border-b border-line">
           <div className="mx-auto flex w-full max-w-column items-start justify-between gap-4 px-5 py-3">
             <p className="readout text-muted">
-              <span className="text-ink">Sample data</span>
-              <span className="mx-2 text-faint">·</span>
-              Rows tagged SAMPLE are seeded examples, not real agent runs.
-              {initial.storage === "memory" && " Storage is in-memory and resets on restart."}
+              {showSample && (
+                <>
+                  <span className="text-ink">Sample data</span>
+                  <span className="mx-2 text-faint">·</span>
+                  Rows tagged SAMPLE are seeded examples, not real agent runs.
+                  {initial.storage === "memory" && " Storage is in-memory and resets on restart."}
+                </>
+              )}
+              {!initial.authed && (
+                <>
+                  {showSample && <span className="mx-2 text-faint">·</span>}
+                  API writes are unauthenticated.
+                </>
+              )}
             </p>
             <Button variant="icon" className="size-6 border-0" aria-label="Dismiss sample data notice" onClick={() => setNoticeDismissed(true)}>
               <X aria-hidden="true" strokeWidth={1.5} className="size-3.5" />

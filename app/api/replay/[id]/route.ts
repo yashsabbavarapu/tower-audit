@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { requireWriteAuth } from "@/lib/api-auth";
 import { auditEntry, gradeReport, replayResult } from "@/lib/control/grading";
 import { describeFailure } from "@/lib/grader/failure";
 import { LIMITS } from "@/lib/limits";
@@ -14,6 +15,8 @@ const BodySchema = z.object({
 });
 
 export async function POST(request: Request, { params }: { params: { id: string } }) {
+  const auth = requireWriteAuth(request);
+  if (!auth.ok) return NextResponse.json(auth.body, { status: auth.status });
   // An empty body is fine: replay against the stored sources.
   const json: unknown = await request.json().catch(() => ({}));
   const parsed = BodySchema.safeParse(json ?? {});

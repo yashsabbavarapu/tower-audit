@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ControlApp } from "@/components/ControlApp";
+import { writesAuthenticated } from "@/lib/api-auth";
 import { driftPoints } from "@/lib/control/grading";
 import { getStore } from "@/lib/store";
 
@@ -13,5 +14,5 @@ export const metadata: Metadata = {
 export default async function Page() {
   const store = getStore();
   const [items, entries] = await Promise.all([store.listItems(), store.listAudit()]);
-  return <ControlApp initial={{ items, entries, points: driftPoints(items), storage: store.kind }} />;
+  return <ControlApp initial={{ items, entries, points: driftPoints(items), storage: store.kind, authed: writesAuthenticated() }} />;
 }

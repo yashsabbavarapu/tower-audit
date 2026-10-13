@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { requireWriteAuth } from "@/lib/api-auth";
 import { auditEntry } from "@/lib/control/grading";
 import { getStore } from "@/lib/store";
 
@@ -12,6 +13,8 @@ const BodySchema = z.object({
 });
 
 export async function POST(request: Request, { params }: { params: { id: string } }) {
+  const auth = requireWriteAuth(request);
+  if (!auth.ok) return NextResponse.json(auth.body, { status: auth.status });
   let json: unknown;
   try {
     json = await request.json();
