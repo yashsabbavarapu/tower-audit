@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react";
 import { AUDIT_FIELD_ID, MORPH_NAME, waitForAudit } from "@/lib/morph";
 import { Button } from "./Button";
 
-/** Amber CTA that grows into the audit textarea (View Transitions API; plain navigation elsewhere). */
-export function UseTowerButton({ className = "" }: { className?: string }) {
+/** Ghost CTA that grows into the audit textarea (View Transitions API; plain navigation elsewhere). */
+export function UseTowerButton({ className = "", size = "lg" }: { className?: string; size?: "sm" | "lg" }) {
   const router = useRouter();
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -34,7 +34,7 @@ export function UseTowerButton({ className = "" }: { className?: string }) {
   };
 
   return (
-    <Button ref={ref} variant="primary" onClick={go} className={className}>
+    <Button ref={ref} variant="outline" onClick={go} className={`${size === "sm" ? "h-9 text-14" : "h-12"} ${className}`}>
       Use Tower
     </Button>
   );
