@@ -1,5 +1,5 @@
 import { parseSourceBlocks, type SourceBlock } from "./sources";
-import type { AuditInput, GradedClaim, Grader, GraderResult, Message, Relevance } from "./types";
+import type { AuditInput, GradedClaim, Grader, GraderInfo, GraderResult, Message, Relevance } from "./types";
 
 /**
  * Demo-mode grader. No model, no network: keyword overlap, number matching
@@ -271,7 +271,12 @@ function relevanceFrom(messages: Message[], sourcesLower: string, hasSources: bo
 }
 
 export class HeuristicGrader implements Grader {
-  readonly info = { name: "Heuristic grader", mode: "demo", model: null } as const;
+  readonly info: GraderInfo;
+
+  /** `reason` says why demo mode is running; it is shown in the header chip and on every report. */
+  constructor(private readonly reason?: string) {
+    this.info = { name: "Heuristic grader", mode: "demo", model: null, ...(reason ? { reason } : {}) };
+  }
 
   async grade(input: AuditInput, messages: Message[]): Promise<GraderResult> {
     const sources = input.sources?.trim() ?? "";
@@ -289,6 +294,7 @@ export class HeuristicGrader implements Grader {
     });
 
     const notes = [
+      ...(this.reason ? [this.reason] : []),
       "Demo mode: claims were checked by keyword and number matching, not by a model. Confidences are capped at 75%.",
     ];
     if (!hasSources) notes.push("No source context was provided, so no claim could be verified or flagged.");

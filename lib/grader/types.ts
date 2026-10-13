@@ -71,10 +71,16 @@ export interface GraderResult {
   notes: string[];
 }
 
+export type GraderProvider = "anthropic" | "gemini";
+
 export interface GraderInfo {
   name: string;
   mode: GraderMode;
   model: string | null;
+  /** Which model API grades. Absent in demo mode. */
+  provider?: GraderProvider;
+  /** Why demo mode is running, in plain English. */
+  reason?: string;
 }
 
 export interface Grader {
