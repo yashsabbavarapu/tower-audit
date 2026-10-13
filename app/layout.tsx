@@ -7,7 +7,7 @@ const body = Inter({ subsets: ["latin"], weight: ["400", "500"], variable: "--fo
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Tower Audit — grade what your AI SDR sends",
+  title: "Tower Audit",
   description: "Paste your GTM agent's output. Tower traces every claim to a source and flags what it made up.",
 };
 

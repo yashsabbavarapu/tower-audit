@@ -273,7 +273,7 @@ function relevanceFrom(messages: Message[], sourcesLower: string, hasSources: bo
 export class HeuristicGrader implements Grader {
   readonly info: GraderInfo;
 
-  /** `reason` says why demo mode is running; it is shown in the header chip and on every report. */
+  /** `reason` says why demo mode is running; it is shown on every report. */
   constructor(private readonly reason?: string) {
     this.info = { name: "Heuristic grader", mode: "demo", model: null, ...(reason ? { reason } : {}) };
   }

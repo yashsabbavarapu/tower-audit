@@ -45,6 +45,12 @@ export function Report({ report, onEdit, onReset }: Props) {
 
   const time = new Date(report.createdAt).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
   const isDemo = report.grader.mode === "demo";
+  // Demo reports already carry their disclaimer in the notes above.
+  const attribution = isDemo
+    ? null
+    : report.grader.provider === "gemini"
+      ? `graded by ${report.grader.model} · free tier`
+      : "graded by claude";
 
   return (
     <div className="flex flex-col gap-12">
@@ -79,6 +85,7 @@ export function Report({ report, onEdit, onReset }: Props) {
             ))}
           </ul>
         )}
+        {attribution && <p className="font-mono text-12 text-faint">{attribution}</p>}
       </section>
 
       <StatRow stats={report.stats} />

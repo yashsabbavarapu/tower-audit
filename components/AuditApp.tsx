@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { splitMessages } from "@/lib/grader/messages";
-import type { AuditReport, GraderInfo } from "@/lib/grader/types";
+import type { AuditReport } from "@/lib/grader/types";
 import { Header } from "./Header";
 import { InputPanel } from "./InputPanel";
 import { LoadingReport } from "./LoadingReport";
@@ -10,7 +10,7 @@ import { Report } from "./Report";
 
 type Phase = { kind: "input" } | { kind: "grading"; messageCount: number } | { kind: "report"; report: AuditReport };
 
-export function AuditApp({ grader }: { grader: GraderInfo }) {
+export function AuditApp() {
   const [phase, setPhase] = useState<Phase>({ kind: "input" });
   const [output, setOutput] = useState("");
   const [sources, setSources] = useState("");
@@ -62,7 +62,7 @@ export function AuditApp({ grader }: { grader: GraderInfo }) {
 
   return (
     <>
-      <Header grader={grader} />
+      <Header />
       <main className="mx-auto w-full max-w-column px-5 pb-24 pt-8 sm:pt-12">
         {phase.kind === "input" && (
           <InputPanel
