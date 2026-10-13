@@ -16,6 +16,7 @@ const AUDIT_LINKS = [
   { href: "/#why-us", label: "Why us?" },
   { href: "/#vision", label: "Vision" },
   { href: "/#ai-system", label: "AI system" },
+  { href: "/control", label: "Control" },
 ];
 
 const WORDMARK = "font-display text-20 font-semibold tracking-display text-ink";
@@ -23,7 +24,7 @@ const WORDMARK = "font-display text-20 font-semibold tracking-display text-ink";
 export function Header() {
   const pathname = usePathname();
 
-  if (pathname.startsWith("/audit")) {
+  if (pathname.startsWith("/audit") || pathname.startsWith("/control")) {
     return (
       <header className="border-b border-line">
         <div className="mx-auto grid h-14 w-full max-w-column grid-cols-[1fr_auto] items-center gap-4 px-5 lg:grid-cols-[1fr_auto_1fr]">

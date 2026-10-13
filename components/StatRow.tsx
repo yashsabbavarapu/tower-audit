@@ -13,7 +13,7 @@ interface StatProps {
   warn?: boolean;
 }
 
-function Stat({ label, value, suffix, detail, warn }: StatProps) {
+export function Stat({ label, value, suffix, detail, warn }: StatProps) {
   const shown = useCountUp(value);
   return (
     <div className="relative flex flex-col bg-surface p-5 sm:p-6">
