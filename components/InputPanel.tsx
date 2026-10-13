@@ -46,13 +46,13 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
   return (
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-4">
-        <span className="eyebrow">Tower Audit</span>
+        <span className="eyebrow">Tower.audit</span>
         <h1 className="font-display text-32 font-bold tracking-display text-ink sm:text-48">
-          Grade what your AI SDR is about to send.
+          Every claim. Checked before it sends.
         </h1>
         <p className="max-w-xl text-16 text-muted">
-          Paste emails or messages your agent wrote. Tower breaks them into checkable claims, traces each one to your
-          research, and flags anything it made up.
+          Paste what your agent wrote. Tower breaks it into claims, traces each one to your research, and flags anything
+          invented.
         </p>
       </div>
 
@@ -132,7 +132,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
         )}
 
         <Button type="submit" variant="primary" disabled={!canSubmit} className="w-full sm:w-auto sm:self-start">
-          Run audit
+          Run the audit
         </Button>
       </form>
 

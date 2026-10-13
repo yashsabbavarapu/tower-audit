@@ -43,6 +43,16 @@ const OFFER = [
   "Prints the full grading formula on every report.",
 ];
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/akarsh-sabbavarapu/";
+const EMAIL_URL = "mailto:yashwanthakarsh.sabbavarapu@gmail.com";
+const CONTACT_LINK = "readout pressable text-muted hover:text-amber-ink focus-visible:text-amber-ink";
+
+const VISION = [
+  "The trust layer for revenue.",
+  "Every AI system touching your pipeline: cited, measured, honest about its limits.",
+  "Audit is the wedge. Approvals, replay, and drift monitoring are next.",
+];
+
 const ARTICLE_URL = "https://akarshsabbavarapu09.hashnode.dev/your-ai-sdr-is-inventing-facts-i-built-the-audit-layer-that-catches-them";
 
 /** The tease before the tool. Server-rendered; the sample report is graded once, offline, by the demo grader. */
@@ -115,7 +125,39 @@ export async function Landing() {
           <UseTowerButton label="Your turn." className="mt-10" />
         </section>
 
-        <section id="writing" className="scroll-mt-8 mt-24 border-t border-line pt-16 sm:mt-32 sm:pt-24">
+        <section id="ai-system" className="scroll-mt-8 mt-24 border-t border-line pb-24 pt-16 sm:mt-32 sm:pb-32 sm:pt-24">
+          <span className="eyebrow">The EVO system</span>
+          <p className="mt-12 max-w-3xl text-balance font-display text-32 font-bold tracking-display text-ink sm:mt-16 sm:text-48">
+            Tower is one instrument in EVO.
+          </p>
+          <p className="mt-8 max-w-3xl text-16 text-muted sm:text-20">
+            EVO is the AI system I built for revenue teams. Nine systems, one thesis: every AI touching your pipeline should be cited, measured, and honest about its limits.
+          </p>
+          <div className="mt-16 flex flex-col gap-4 border-t border-line pt-6 sm:mt-24">
+            <p className="text-16 text-ink">Built by Akarsh Sabbavarapu, developer.</p>
+            <div className="flex items-center gap-6">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={CONTACT_LINK}>
+                LinkedIn
+              </a>
+              <a href={EMAIL_URL} className={CONTACT_LINK}>
+                Email
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="vision" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-40 sm:pt-24">
+          <span className="eyebrow">The vision</span>
+          <div className="mt-12 flex flex-col gap-20 sm:mt-16 sm:gap-32">
+            {VISION.map((line) => (
+              <p key={line} className="max-w-3xl text-balance font-display text-32 font-bold tracking-display text-ink sm:text-48">
+                {line}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <section id="writing" className="scroll-mt-8 border-t border-line pt-16 sm:pt-24">
           <span className="eyebrow">Writing</span>
           <a
             href={ARTICLE_URL}
