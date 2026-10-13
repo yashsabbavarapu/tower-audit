@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const display = Inter_Tight({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-display" });
+const display = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display" });
 const body = Inter({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-body" });
 
 export const metadata: Metadata = {

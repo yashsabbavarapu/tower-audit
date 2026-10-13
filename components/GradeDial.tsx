@@ -78,7 +78,7 @@ export function GradeDial({ grade }: { grade: number | null }) {
         </text>
       </svg>
       <div className="-mt-2 flex items-baseline gap-2">
-        <span className="font-display text-64 font-bold tabular-nums tracking-display text-amber-ink">
+        <span className="font-display text-64 font-semibold tabular-nums tracking-display text-amber-ink">
           {shown === null ? "—" : shown}
         </span>
         <span className="readout text-faint">/ 100</span>

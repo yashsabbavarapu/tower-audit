@@ -131,7 +131,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
           </p>
         )}
 
-        <Button type="submit" variant="primary" disabled={!canSubmit} className="w-full sm:w-auto sm:self-start">
+        <Button type="submit" variant="outline" disabled={!canSubmit} className="h-12 w-full sm:w-auto sm:self-start">
           Run the audit
         </Button>
       </form>

@@ -42,7 +42,7 @@ export function SamplePreview({ report }: { report: AuditReport }) {
               } ${i % 2 === 1 ? "border-l border-line" : ""} ${i > 1 ? "border-t border-line sm:border-t-0" : ""}`}
             >
               <dt className="eyebrow">{r.label}</dt>
-              <dd className="m-0 mt-3 font-display text-48 font-bold tabular-nums leading-none tracking-display text-ink">
+              <dd className="m-0 mt-3 font-display text-48 font-semibold tabular-nums leading-none tracking-display text-ink">
                 {r.value}
               </dd>
               {r.detail && <span className="readout mt-2 tabular-nums text-faint">{r.detail}</span>}

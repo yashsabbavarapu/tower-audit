@@ -27,7 +27,7 @@ export function FlagCards({ claims, onOpen }: Props) {
                   <VerdictChip verdict="flagged" />
                   <Confidence value={claim.confidence} />
                 </span>
-                <span className="font-display text-20 font-bold tracking-display text-ink">{flag.headline}</span>
+                <span className="font-display text-20 font-semibold tracking-display text-ink">{flag.headline}</span>
                 <span className="border-l border-line pl-3 text-14 text-muted">&ldquo;{claim.text}&rdquo;</span>
                 <span className="text-16 text-ink">{flag.explanation}</span>
                 {flag.fix && (

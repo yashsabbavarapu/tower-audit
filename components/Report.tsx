@@ -74,7 +74,7 @@ export function Report({ report, onEdit, onReset }: Props) {
           <span className="readout tabular-nums text-faint">{time}</span>
         </div>
         <GradeDial grade={report.grade} />
-        <p className="text-balance text-center font-display text-20 font-bold tracking-display text-ink sm:text-24">
+        <p className="text-balance text-center font-display text-20 font-semibold tracking-display text-ink sm:text-24">
           {report.verdictLine}
         </p>
         {report.notes.length > 0 && (

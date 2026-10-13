@@ -18,7 +18,7 @@ const AUDIT_LINKS = [
   { href: "/#ai-system", label: "AI system" },
 ];
 
-const WORDMARK = "font-display text-20 font-bold tracking-display text-ink";
+const WORDMARK = "font-display text-20 font-semibold tracking-display text-ink";
 
 export function Header() {
   const pathname = usePathname();

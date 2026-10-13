@@ -20,7 +20,7 @@ function Stat({ label, value, suffix, detail, warn }: StatProps) {
       {/* The grid's gaps show bg-line through, so the warning tint is a flat layer over the opaque surface. */}
       {warn && <span aria-hidden="true" className="absolute inset-0 bg-signal-dim" />}
       <span className="eyebrow relative">{label}</span>
-      <span className="relative mt-3 font-display text-48 font-bold tabular-nums tracking-display text-ink">
+      <span className="relative mt-3 font-display text-48 font-semibold tabular-nums tracking-display text-ink">
         {shown === null ? "—" : `${shown}${suffix ?? ""}`}
       </span>
       {detail && <span className="readout relative mt-2 tabular-nums text-faint">{detail}</span>}
