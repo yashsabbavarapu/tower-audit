@@ -47,7 +47,7 @@ export function InputPanel({ output, sources, error, onOutputChange, onSourcesCh
     <div className="flex flex-col gap-12">
       <div className="flex flex-col gap-4">
         <span className="eyebrow">Tower.audit</span>
-        <h1 className="font-display text-32 font-bold tracking-display text-ink sm:text-48">
+        <h1 className="font-display text-32 font-semibold tracking-display text-ink sm:text-48">
           Every claim. Checked before it sends.
         </h1>
         <p className="max-w-xl text-16 text-muted">

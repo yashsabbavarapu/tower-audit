@@ -55,13 +55,13 @@ export function ProblemSection({ questions }: { questions: string[] }) {
   }, [started, q, questions.length]);
 
   return (
-    <section ref={root} id="problem" className="scroll-mt-8 border-t border-line pb-24 pt-16 sm:pb-32 sm:pt-24">
+    <section ref={root} id="problem" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
       <span className="eyebrow">The problem</span>
       <ul className="mt-12 flex flex-col gap-14 sm:mt-16 sm:gap-20">
         {questions.map((text, i) => {
           const typed = i < q ? text : i === q ? text.slice(0, n) : "";
           return (
-            <li key={text} className="grid max-w-2xl font-display text-24 font-bold tracking-display text-ink sm:text-32">
+            <li key={text} className="grid max-w-2xl font-display text-24 font-semibold tracking-display text-ink sm:text-32">
               <span className="sr-only">{text}</span>
               {/* Ghost text reserves the final height so nothing reflows while typing. */}
               <span aria-hidden="true" className="invisible col-start-1 row-start-1 text-balance">
@@ -76,7 +76,7 @@ export function ProblemSection({ questions }: { questions: string[] }) {
         })}
       </ul>
       <div className={`transition-opacity duration-[480ms] ease-out ${done ? "visible opacity-100" : "invisible opacity-0"}`}>
-        <p className="mt-28 max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:mt-40 sm:text-64">
+        <p className="mt-28 max-w-3xl text-balance font-display text-48 font-semibold tracking-display text-ink sm:mt-40 sm:text-64">
           Tower is the answer.
         </p>
         <UseTowerButton label="Cross-examine my agent" className="mt-12" />

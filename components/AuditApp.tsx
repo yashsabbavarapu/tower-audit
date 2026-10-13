@@ -63,7 +63,7 @@ export function AuditApp() {
   return (
     <>
       <Header />
-      <main className="view-enter mx-auto w-full max-w-column px-5 pb-24 pt-8 sm:pt-12">
+      <main className="view-enter mx-auto w-full max-w-column px-5 pb-24 pt-10 sm:pt-16">
         {phase.kind === "input" && (
           <InputPanel
             output={output}
