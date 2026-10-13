@@ -1,0 +1,49 @@
+/*
+ * Tower design tokens — the single source of truth.
+ * Source: files/tower-design-spec.md (v0, 2026-10-12). Components must never
+ * use raw colors, radii, durations or easings; they reference these through
+ * the Tailwind theme (tailwind.config.ts), which maps 1:1 onto this file.
+ */
+:root {
+  /* Palette */
+  --ink-950: #0b0d10; /* app background */
+  --ink-900: #13161b; /* surface */
+  --ink-800: #1b2027; /* raised surface */
+  --line: #23282f; /* hairlines — separation, never shadows */
+  --paper: #f2eee3; /* primary text */
+  --muted: #8b9097; /* secondary text */
+  --faint: #5a6068; /* tertiary text */
+  --amber: #e8a33d; /* THE accent */
+  --amber-dim: rgba(232, 163, 61, 0.14);
+  --sage: #7dba8b; /* verified verdicts only */
+  --signal: #d96a5f; /* flagged verdicts only */
+
+  /* Derived state tokens (same hues, no new colors) */
+  --amber-hover: #eeb257;
+  --sage-dim: rgba(125, 186, 139, 0.14);
+  --signal-dim: rgba(217, 106, 95, 0.14);
+  --scrim: rgba(11, 13, 16, 0.72);
+
+  /* Shape */
+  --radius-card: 10px;
+  --radius-control: 8px;
+  --radius-chip: 999px;
+  --hairline: 1px;
+  --focus-ring: 2px;
+  --column-max: 880px;
+  --drawer-max-h: 85vh;
+
+  /* Motion */
+  --dur-micro: 120ms;
+  --dur-press: 160ms;
+  --dur-drawer: 240ms;
+  --dur-dial: 600ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --press-scale: 0.98;
+
+  /* States */
+  --opacity-disabled: 0.4;
+  --pulse-low: 0.35;
+  --pulse-high: 0.8;
+  --dur-pulse: 1400ms;
+}

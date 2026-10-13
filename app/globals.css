@@ -1,0 +1,43 @@
+@import "../styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink-950 font-body text-16 text-paper antialiased;
+  }
+  ::selection {
+    @apply bg-amber-dim text-paper;
+  }
+  :focus-visible {
+    @apply outline outline-focus outline-offset-focus outline-amber;
+  }
+}
+
+@layer components {
+  /* Mono eyebrow label: the data voice. */
+  .eyebrow {
+    @apply font-mono text-12 font-medium uppercase tracking-eyebrow text-muted;
+  }
+  /* Shared press physics for anything tappable: .98 on press, 160ms ease-out release. */
+  .pressable {
+    @apply transition-[transform,background-color,border-color,color,opacity] duration-press ease-out active:scale-press disabled:cursor-not-allowed disabled:opacity-disabled disabled:active:scale-100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
