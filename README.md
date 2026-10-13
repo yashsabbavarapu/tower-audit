@@ -23,7 +23,7 @@ Requires Node ≥ 20.
 | `ANTHROPIC_API_KEY` | Enables `AnthropicGrader`. |
 | `TOWER_MODEL` | Anthropic model override. Default `claude-sonnet-5-5`. |
 | `GEMINI_API_KEY` | Enables `GeminiGrader` (Google AI Studio free tier). |
-| `TOWER_GEMINI_MODEL` | Gemini model override. Default `gemini-2.5-flash`. |
+| `TOWER_GEMINI_MODEL` | Gemini model override. Default `gemini-3.8-flash`. |
 
 **Selection order.** An explicit `TOWER_GRADER` always wins. If it's unset, Tower uses Anthropic when `ANTHROPIC_API_KEY` is set, then Gemini when `GEMINI_API_KEY` is set, then the labeled **demo mode** heuristic grader. If `TOWER_GRADER` names a grader whose key is missing (or isn't a known value), Tower runs demo mode and says why in the header chip tooltip and on the report.
 

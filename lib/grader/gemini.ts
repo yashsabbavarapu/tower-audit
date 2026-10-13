@@ -14,7 +14,7 @@ import {
 import type { AuditInput, Grader, GraderInfo, GraderResult, Message } from "./types";
 
 /** Available on the Google AI Studio free tier. */
-export const DEFAULT_GEMINI_MODEL = "gemini-2.5-flash";
+export const DEFAULT_GEMINI_MODEL = "gemini-3.8-flash";
 
 const API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const TIMEOUT_MS = 90_000;

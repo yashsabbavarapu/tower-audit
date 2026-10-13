@@ -51,7 +51,7 @@ async function main() {
   const result = await grader.grade(input, messages);
   const [c1, c2, c3, c4] = result.claims;
   assert.equal(seen.length, 2, "two-call pipeline");
-  assert.equal(seen[0]!.url, "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent");
+  assert.equal(seen[0]!.url, "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent");
   assert.equal((seen[0]!.init.headers as Record<string, string>)["x-goog-api-key"], "test-key");
   const body = JSON.parse(String(seen[1]!.init.body));
   assert.equal(body.generationConfig.responseMimeType, "application/json");
