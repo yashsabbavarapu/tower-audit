@@ -55,13 +55,13 @@ export function SamplePreview({ report }: { report: AuditReport }) {
               <VerdictChip verdict="flagged" />
               <Confidence value={claim.confidence} />
             </div>
-            <h3 className="m-0 max-w-2xl font-display text-24 font-semibold tracking-display text-ink sm:text-32">
+            <h3 className="m-0 max-w-2xl text-balance font-display text-24 font-semibold tracking-display text-ink sm:text-32">
               {flag.headline}
             </h3>
             <blockquote className="m-0 max-w-2xl border-l border-line pl-4 text-16 text-muted">
               &ldquo;{claim.text}&rdquo;
             </blockquote>
-            <p className="m-0 max-w-2xl text-16 text-ink">{flag.explanation}</p>
+            <p className="m-0 max-w-2xl text-pretty text-16 text-ink">{flag.explanation}</p>
           </article>
         )}
       </div>

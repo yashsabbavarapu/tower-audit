@@ -12,7 +12,7 @@ export function AuditLogSection({ entries }: { entries: AuditEntry[] }) {
   const visible = entries.slice(0, shown);
 
   return (
-    <section id="audit-log" className="scroll-mt-8 border-t border-line pb-24 pt-20 sm:pb-32 sm:pt-[7.5rem]">
+    <section id="audit-log" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
       <span className="eyebrow">Audit log</span>
       <h2 className="mt-6 max-w-3xl text-balance font-display text-32 font-semibold tracking-display text-ink sm:text-48">Everything it did. In order.</h2>
 

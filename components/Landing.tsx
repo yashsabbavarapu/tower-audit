@@ -2,6 +2,7 @@ import { HeuristicGrader } from "@/lib/grader/heuristic";
 import { runAudit } from "@/lib/grader";
 import { SAMPLE_OUTPUT, SAMPLE_SOURCES } from "@/lib/sample";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { Header } from "./Header";
 import { SamplePreview } from "./SamplePreview";
 import { ProblemSection } from "./ProblemSection";
@@ -43,6 +44,12 @@ const OFFER = [
   "Prints the full grading formula on every report.",
 ];
 
+const CONTROL_PLANE = [
+  "The queue. Every agent output waits for clearance.",
+  "Drift. Know the week accuracy slides, not the quarter.",
+  "The audit log. Everything it did, in order.",
+];
+
 const LINKEDIN_URL = "https://www.linkedin.com/in/akarsh-sabbavarapu/";
 const EMAIL_URL = "mailto:yashwanthakarsh.sabbavarapu@gmail.com";
 const CONTACT_LINK = "readout pressable text-muted hover:text-amber-ink focus-visible:text-amber-ink";
@@ -50,7 +57,7 @@ const CONTACT_LINK = "readout pressable text-muted hover:text-amber-ink focus-vi
 const VISION = [
   "The trust layer for revenue.",
   "Every AI system touching your pipeline: cited, measured, honest about its limits.",
-  "Audit is the wedge. Approvals, replay, and drift monitoring are next.",
+  "Audit was the wedge. The control plane is live.",
 ];
 
 const ARTICLE_URL = "https://akarshsabbavarapu09.hashnode.dev/your-ai-sdr-is-inventing-facts-i-built-the-audit-layer-that-catches-them";
@@ -68,7 +75,7 @@ export async function Landing() {
           <h1 className="max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:text-64">
             Know what your AI SDR sends. Before your prospects do.
           </h1>
-          <p className="max-w-xl text-16 text-muted sm:text-20">
+          <p className="max-w-xl text-pretty text-16 text-muted sm:text-20">
             The trust layer for autonomous outbound. Every claim your agent makes, checked against your research, graded, and traced. Before it sends.
           </p>
         </section>
@@ -117,20 +124,20 @@ export async function Landing() {
           </ul>
         </section>
 
-        <section id="demo" className="scroll-mt-8 border-t border-line pt-20 sm:pt-[7.5rem]">
+        <section id="demo" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
           <span className="eyebrow">Proof</span>
-          <h2 className="mb-10 mt-6 font-display text-48 font-semibold tracking-display text-ink sm:text-64">Watch it catch one.</h2>
+          <h2 className="mb-10 mt-6 text-balance font-display text-48 font-semibold tracking-display text-ink sm:text-64">Watch it catch one.</h2>
           <SamplePreview report={report} />
           <p className="mt-6 text-14 text-muted">Sample report. The $40M Series C never happened. Tower caught it before it sent.</p>
           <UseTowerButton label="Your turn." className="mt-10" />
         </section>
 
-        <section id="ai-system" className="scroll-mt-8 mt-24 border-t border-line pb-[7.5rem] pt-20 sm:mt-32 sm:pb-40 sm:pt-[7.5rem]">
+        <section id="ai-system" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
           <span className="eyebrow">The EVO system</span>
           <p className="mt-12 max-w-3xl text-balance font-display text-32 font-semibold tracking-display text-ink sm:mt-16 sm:text-48">
             Tower is one instrument in EVO.
           </p>
-          <p className="mt-8 max-w-3xl text-16 text-muted sm:text-20">
+          <p className="mt-8 max-w-3xl text-pretty text-16 text-muted sm:text-20">
             EVO is the AI system I built for revenue teams. Nine systems, one thesis: every AI touching your pipeline should be cited, measured, and honest about its limits.
           </p>
           <div className="mt-16 flex flex-col gap-4 border-t border-line pt-6 sm:mt-24">
@@ -144,6 +151,23 @@ export async function Landing() {
               </a>
             </div>
           </div>
+        </section>
+
+        <section id="control-plane" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
+          <span className="eyebrow">The control plane</span>
+          <ul className="mt-10 flex flex-col sm:mt-12">
+            {CONTROL_PLANE.map((line) => (
+              <li key={line} className="max-w-3xl border-t border-line py-6 font-display text-24 font-semibold tracking-display text-ink last:border-b sm:py-8 sm:text-32">
+                <span className="text-balance">{line}</span>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/control"
+            className="pressable mt-10 inline-flex h-12 select-none items-center justify-center rounded-control border border-line bg-transparent px-5 font-display text-16 font-semibold tracking-display text-ink hover:border-amber hover:text-amber-ink active:translate-y-px"
+          >
+            Enter mission control
+          </Link>
         </section>
 
         <section id="vision" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-[12.5rem] sm:pt-[7.5rem]">
@@ -168,7 +192,7 @@ export async function Landing() {
             <h2 className="max-w-2xl text-balance font-display text-24 font-semibold tracking-display text-ink sm:text-32">
               Your AI SDR is inventing facts. I built the audit layer that catches them.
             </h2>
-            <p className="max-w-xl text-16 text-muted">
+            <p className="max-w-xl text-pretty text-16 text-muted">
               The story behind Tower: why agents invent claims, and the trust layer I am building for revenue teams.
             </p>
             <span className="readout inline-flex items-center gap-2 text-amber-ink">

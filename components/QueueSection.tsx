@@ -67,7 +67,7 @@ export function QueueSection({ items, busy, error, onOpen, onDecide, onApproveAl
   }, [pending.length]);
 
   return (
-    <section id="queue" className="scroll-mt-8 border-t border-line pb-24 pt-20 sm:pb-32 sm:pt-[7.5rem]">
+    <section id="queue" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
       <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
         <span className="eyebrow">Queue · {pad(pending.length)} pending</span>
         {confirming ? (
@@ -102,8 +102,8 @@ export function QueueSection({ items, busy, error, onOpen, onDecide, onApproveAl
             role="tab"
             aria-selected={tab === t}
             onClick={() => setTab(t)}
-            className={`readout rounded-control pb-1 transition-colors duration-press ease-out ${
-              tab === t ? "border-b border-amber text-ink" : "text-faint hover:text-ink"
+            className={`readout rounded-control border-b border-transparent pb-1 transition-colors duration-press ease-out ${
+              tab === t ? "border-amber text-ink" : "text-faint hover:text-ink"
             }`}
           >
             {t}
@@ -120,7 +120,7 @@ export function QueueSection({ items, busy, error, onOpen, onDecide, onApproveAl
       {rows.length === 0 ? (
         tab === "pending" ? (
           <>
-            <p className="mt-12 font-display text-32 font-semibold tracking-display text-ink sm:text-48">The queue is clear.</p>
+            <p className="mt-12 text-balance font-display text-32 font-semibold tracking-display text-ink sm:text-48">The queue is clear.</p>
             <ConnectSnippet />
           </>
         ) : (

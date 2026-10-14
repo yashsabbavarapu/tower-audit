@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import { ArrowLeft, Check, RotateCcw, Send } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import { countOf } from "@/lib/format";
 import { RUBRIC } from "@/lib/grader/score";
@@ -14,6 +15,7 @@ import { StatRow } from "./StatRow";
 
 interface Props {
   report: AuditReport;
+  sources: string;
   onEdit: () => void;
   onReset: () => void;
 }
@@ -30,7 +32,12 @@ function SectionHeading({ index, title, detail }: { index: string; title: string
   );
 }
 
-export function Report({ report, onEdit, onReset }: Props) {
+const WRITE_SECRET = process.env.NEXT_PUBLIC_TOWER_API_SECRET ?? "";
+
+type Sent = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind: "error"; message: string };
+
+export function Report({ report, sources, onEdit, onReset }: Props) {
+  const [sent, setSent] = useState<Sent>({ kind: "idle" });
   const [active, setActive] = useState<GradedClaim | null>(null);
   const trigger = useRef<HTMLElement | null>(null);
   const flagged = report.claims.filter((c) => c.verdict === "flagged");
@@ -43,6 +50,26 @@ export function Report({ report, onEdit, onReset }: Props) {
     setActive(null);
     trigger.current?.focus({ preventScroll: true });
   }, []);
+
+  const sendToQueue = useCallback(async () => {
+    setSent({ kind: "sending" });
+    try {
+      const messages = report.messages.map((m) => (m.subject ? `Subject: ${m.subject}\n${m.body}` : m.body));
+      const response = await fetch("/api/queue", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...(WRITE_SECRET ? { "x-tower-secret": WRITE_SECRET } : {}) },
+        body: JSON.stringify({ agent_name: "Manual audit", messages, sources: sources.trim() ? sources : undefined }),
+      });
+      const body: unknown = await response.json().catch(() => null);
+      if (!response.ok) {
+        const message = body && typeof body === "object" && "error" in body && typeof body.error === "string" ? body.error : `Couldn't reach the queue (${response.status}).`;
+        throw new Error(message);
+      }
+      setSent({ kind: "sent" });
+    } catch (err) {
+      setSent({ kind: "error", message: err instanceof Error ? err.message : "Couldn't reach the queue." });
+    }
+  }, [report.messages, sources]);
 
   const time = new Date(report.createdAt).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
   const isDemo = report.grader.mode === "demo";
@@ -64,6 +91,25 @@ export function Report({ report, onEdit, onReset }: Props) {
           <RotateCcw aria-hidden="true" strokeWidth={1.5} className="size-4" />
           New audit
         </Button>
+      </div>
+      <div className="-mt-6 flex flex-wrap items-center gap-x-4 gap-y-2" aria-live="polite">
+        {sent.kind === "sent" ? (
+          <p className="readout flex items-center gap-2 text-muted">
+            <Check aria-hidden="true" strokeWidth={1.5} className="size-4 text-sage" />
+            In the queue.
+            <Link href="/control" className="rounded-control text-amber-ink underline decoration-line underline-offset-4 hover:decoration-amber-ink">
+              Open mission control
+            </Link>
+          </p>
+        ) : (
+          <>
+            <Button onClick={sendToQueue} disabled={sent.kind === "sending"}>
+              <Send aria-hidden="true" strokeWidth={1.5} className="size-4" />
+              {sent.kind === "sending" ? "Sending…" : "Send to queue"}
+            </Button>
+            {sent.kind === "error" && <p className="readout text-signal">{sent.message}</p>}
+          </>
+        )}
       </div>
 
       <section aria-labelledby="report-title" className="flex flex-col gap-6 rounded-card border border-line bg-surface p-5 sm:p-8">

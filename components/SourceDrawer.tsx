@@ -101,14 +101,14 @@ export function SourceDrawer({ claim, messages, onClose }: Props) {
           <div className="flex flex-col gap-6 overflow-y-auto overscroll-contain px-5 pb-8 pt-5">
             <div className="flex flex-col gap-3">
               <span className="readout truncate text-faint">{messageLabel(message, shown.messageIndex)}</span>
-              <p className="font-display text-20 font-semibold tracking-display text-ink">{shown.text}</p>
+              <p className="text-pretty font-display text-20 font-semibold tracking-display text-ink">{shown.text}</p>
               <div className="flex flex-wrap items-center gap-3">
                 <VerdictChip verdict={shown.verdict} />
                 <Confidence value={shown.confidence} />
               </div>
             </div>
 
-            <p className="text-16 text-muted">{shown.explanation}</p>
+            <p className="text-pretty text-16 text-muted">{shown.explanation}</p>
 
             <div className="flex flex-col gap-3">
               <span className="eyebrow">{BASIS_LABEL[shown.basis]}</span>

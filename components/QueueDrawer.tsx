@@ -25,16 +25,16 @@ interface Props {
 function ClaimRow({ claim }: { claim: GradedClaim }) {
   return (
     <li className="flex flex-col gap-3 border-t border-line py-5 first:border-t-0 first:pt-0">
-      <p className="text-16 text-ink">{claim.text}</p>
+      <p className="text-pretty text-16 text-ink">{claim.text}</p>
       <div className="flex flex-wrap items-center gap-3">
         <VerdictChip verdict={claim.verdict} />
         <Confidence value={claim.confidence} />
       </div>
-      <p className="text-14 text-muted">{claim.explanation}</p>
+      <p className="text-pretty text-14 text-muted">{claim.explanation}</p>
       {claim.source && <blockquote className="border-l border-amber pl-3 text-14 text-ink">{claim.source.excerpt}</blockquote>}
       {claim.flag?.fix && (
-        <p className="text-14 text-muted">
-          <span className="readout mr-2 text-faint">Safer line</span>
+        <p className="flex flex-col gap-1 text-pretty text-14 text-muted">
+          <span className="readout text-faint">Safer line</span>
           {claim.flag.fix}
         </p>
       )}
@@ -144,7 +144,7 @@ export function QueueDrawer({ item, busy, onClose, onDecide, onReplay }: Props) 
             <div className="flex flex-col gap-8 overflow-y-auto overscroll-contain px-5 pb-6 pt-5">
               <div className="flex flex-col gap-3">
                 <div className="flex items-baseline justify-between gap-4">
-                  <p className="font-display text-24 font-semibold tracking-display text-ink">{shown.agent_name}</p>
+                  <p className="min-w-0 text-balance font-display text-24 font-semibold tracking-display text-ink">{shown.agent_name}</p>
                   <span className="font-display text-32 font-semibold tabular-nums tracking-display text-ink">{shown.grade ?? "—"}</span>
                 </div>
                 <p className="readout flex flex-wrap gap-x-3 text-muted">

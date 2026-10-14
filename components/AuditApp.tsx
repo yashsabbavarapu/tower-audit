@@ -76,7 +76,7 @@ export function AuditApp() {
         )}
         {phase.kind === "grading" && <LoadingReport messageCount={phase.messageCount} onCancel={cancel} />}
         {phase.kind === "report" && (
-          <Report report={phase.report} onEdit={() => setPhase({ kind: "input" })} onReset={reset} />
+          <Report report={phase.report} sources={sources} onEdit={() => setPhase({ kind: "input" })} onReset={reset} />
         )}
       </main>
     </>

@@ -137,7 +137,7 @@ export function ControlApp({ initial }: { initial: Initial }) {
         <section className="flex flex-col items-start gap-6 pb-16 pt-16 sm:gap-8 sm:pb-24 sm:pt-28">
           <span className="eyebrow">Tower control</span>
           <h1 className="max-w-3xl text-balance font-display text-48 font-bold tracking-display text-ink sm:text-64">Nothing sends without clearance.</h1>
-          <p className="max-w-xl text-16 text-muted sm:text-20">Every agent output waits in the queue. You approve, it sends. Tower grades, traces, and remembers.</p>
+          <p className="max-w-xl text-pretty text-16 text-muted sm:text-20">Every agent output waits in the queue. You approve, it sends. Tower grades, traces, and remembers.</p>
           <nav aria-label="On this page" className="flex items-center gap-6 pt-2">
             {NAV.map((l) => (
               <a key={l.href} href={l.href} className="readout rounded-control text-muted transition-colors duration-press ease-out hover:text-ink">

@@ -89,7 +89,7 @@ export function DriftSection({ points, sample }: { points: DriftPoint[]; sample:
   const enough = points.length >= MIN_POINTS && days > MIN_SPAN_DAYS;
 
   return (
-    <section id="drift" className="scroll-mt-8 border-t border-line pb-24 pt-20 sm:pb-32 sm:pt-[7.5rem]">
+    <section id="drift" className="scroll-mt-8 border-t border-line pb-[7.5rem] pt-20 sm:pb-40 sm:pt-[7.5rem]">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <span className="eyebrow">Drift</span>
         {sample !== "none" && <span className="readout text-faint">{sample === "all" ? "Sample data" : "Includes sample data"}</span>}
